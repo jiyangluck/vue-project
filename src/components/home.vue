@@ -1,20 +1,27 @@
 <template>
 	<div>
 		<h1>主页</h1>
-		<button v-on:click="getdata">获取数据</button>
-		<button><router-link to="/videos">视频</router-link></button>
+		<p>您未登录, {{seconds}} 秒后跳转到登录页。</p>
 	</div>
 </template>
 
 <script>
 
 	export default {
-		methods:{
-			getdata(){
-				this.$http.get('data/text.txt').then(function(res){
-					alert(res.data);
-				})
+		data(){
+			return {
+				seconds:5
 			}
+		},
+		mounted(){
+			var vm = this;
+			
+			setInterval(function(){
+				vm.seconds--;
+				if(vm.seconds === 0){
+					vm.$router.push({path:'/login'});
+				}
+			},1000)
 		}
 	}
 </script>

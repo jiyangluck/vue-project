@@ -5,6 +5,7 @@ import Movie from './components/movie.vue';
 import Videos from './components/videos.vue';
 import Home from './components/home.vue';
 import List from './components/list.vue';
+import Login from './components/login.vue';
 import VueResource from 'vue-resource';
 
 Vue.config.debug = true;
@@ -14,6 +15,7 @@ Vue.use(VueResource);
 const router = new VueRouter({
 	routes:[
 		{path:'/',component:Home},
+		{path:'/login',component:Login},
 		{path:'/movie',component:Movie},
 		{path:'/videos',component:Videos}
 	]
